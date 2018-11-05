@@ -6,12 +6,17 @@
 </head>
 <body>
 <div class="mainSection">
-    <div id="storeGroupPanel" class="store_group_right"></div>
+    <div id="storeGroupPanel" class="store_group_right" data-id="1"></div>
 </div>
 <script src="https://static-dev.itrigger.cn/Content/JS/jquery-1.9.1.js"></script>
 <script src="js/store.js"></script>
 <script>
     $("#storeGroupPanel").html("你好啊");
+    if ($("#storeGroupPanel").attr("data-id") == 1) {
+       $("#storeGroupPanel").html($("#storeGroupPanel").attr("data-id"));
+    } else {
+       $("#storeGroupPanel").html("哈哈哈");
+    }
 </script>
 </body>
 </html>
