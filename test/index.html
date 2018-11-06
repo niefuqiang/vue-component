@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>优惠券列表</title>
+    <link href="/Content/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <link href="/Content/Style/standard.css" rel="stylesheet"/>
+    <link href="css/coupon.css" rel="stylesheet" />
+</head>
+<body>
+<div class="mainSection">
+    <div class="store_right" style="display: none;">
+        <ul class="nav nav-tabs trace-tab dt-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#crmStore" aria-controls="crmStore" data-id="crmStore" data-parent="#deals-block" role="tab" data-toggle="tab">优惠券</a></li>
+            <!--<li role="presentation"><a href="#storePanel" aria-controls="storePanel" data-parent="#deals-block" role="tab" data-toggle="tab">微信优惠券</a></li>-->
+            <!--<li role="presentation" style="width: 140px;"><a href="#payStore"  aria-controls="payStore" data-id="payStore" data-parent="#deals-block" role="tab" data-toggle="tab">微信支付优惠券</a></li>-->
+            <!--<li role="presentation" style="width: 140px;"><a href="#alPayStore"  aria-controls="alPayStore" data-id="alPayStore" data-parent="#deals-block" role="tab" data-toggle="tab">支付宝优惠券</a></li>-->
+        </ul>
+        <div id="deals-block" class="tab-content">
+            <!--系统优惠券-->
+            <!--<div role="tabpanel" class="tab-block tab-pane fade active in" id="crmStore">-->
+
+            <!--</div>-->
+            <!--微信优惠券-->
+            <div role="tabpanel" class="tab-block tab-pane coll" id="storePanel">
+
+            </div>
+            <!--微信支付优惠券-->
+            <div role="tabpanel" class="tab-block tab-pane coll" id="payStore">
+
+            </div>
+            <!--支付宝优惠券-->
+            <div role="tabpanel" class="tab-block tab-pane coll" id="alPayStore">
+
+            </div>
+        </div>
+    </div>
+    <div id="crmStore"></div>
+</div>
+<div class="modal fade" id="grantCouponModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog fonfirm_del">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">新建优惠券</h4>
+            </div>
+            <div class="modal-body">
+                <div class="radio-main">
+                    <div class="radio-title">请选择优惠券的发放方式：</div>
+                    <div class="get-radio">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" value="option1" checked>
+                                <span class="addGroupOptionGong">会员规则和营销活动等发放</span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" value="option2">
+                                <span class="addGroupOptionGong">由导购通过APP进行发放</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn cancel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn commonBtn new-wx-coupon" data-loading-text="<span class='fa fa-spin fa-spinner'></span>处理中">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="grantCrmCouponModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog fonfirm_del">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">新建优惠券</h4>
+            </div>
+            <div class="modal-body">
+                <div class="radio-main">
+                    <div class="radio-title">请选择优惠券的发放方式：</div>
+                    <div class="get-radio">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionRadios" value="option1" checked>
+                                <span class="addGroupOptionGong">通过活动，或者积分兑换发放</span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionRadios" value="option2">
+                                <span class="addGroupOptionGong">由工作人员通过APP进行发放</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn cancel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn commonBtn new-crm-coupon" data-loading-text="<span class='fa fa-spin fa-spinner'></span>处理中">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="grantPayCouponModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog fonfirm_del">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">新建优惠券</h4>
+            </div>
+            <div class="modal-body">
+                <div class="radio-main">
+                    <div class="radio-main">
+                        <div class="radio-title"><span class="title-icon">*</span>请选择优惠券的发放方式：</div>
+                        <div class="get-radio">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionRadio" value="option1" checked>
+                                    <span class="addGroupOptionGong">会员规则和营销活动等发放</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionRadio" value="option2">
+                                    <span class="addGroupOptionGong">由导购通过APP进行发放</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s-search-bar">
+                        <div class="s-search-item">
+                            <div class="form-group">
+                                <label><span class="title-icon">*</span>请先在微信后台创建微信支付优惠券，然后将优惠券ID填在此处：</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control control-normal-text pay-search" placeholder="请输入微信后台创建的支付券批次ID并查询"/>
+                                    <span class="input-group-addon modalSearch pay-search-button">
+                                         <span class="fa fa-search"></span>
+                                     </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pay-search-result">
+                        <label class="pay-search-label">查询结果（支付券批次有效，创建按钮才可用）</label>
+                        <div id="pay-content" class="pay-content">
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                <tr class="head">
+                                    <th>优惠券名称</th>
+                                    <th>优惠券批次ID</th>
+                                    <th>优惠券批次状态</th>
+                                </tr>
+                                </tbody>
+                                <tbody class="add-pay-coupon">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn cancel" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn commonBtn new-pay-coupon" data-loading-text="<span class='fa fa-spin fa-spinner'></span>处理中">创 建</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="grantAlPayCouponModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog fonfirm_del">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">新建优惠券</h4>
+            </div>
+            <div class="modal-body">
+                <div class="radio-main">
+                    <div class="radio-title">请选择优惠券的发放方式：</div>
+                    <div class="get-radio">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="option" value="option1" checked>
+                                <span class="addGroupOptionGong">会员规则和营销活动等发放</span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="option" value="option2">
+                                <span class="addGroupOptionGong">由导购通过APP进行发放</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn cancel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn commonBtn new-al-pay-coupon" data-loading-text="<span class='fa fa-spin fa-spinner'></span>处理中">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog fonfirm_del">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="cancelMess">二维码</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs trace-tab dt-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#wxCoupon" aria-controls="wxCoupon" data-parent="#content" role="tab" data-toggle="tab">微信优惠券</a></li>
+                    <li role="presentation"><a href="#mixedCoupon"  aria-controls="mixedCoupon" data-parent="#content" role="tab" data-toggle="tab">混码优惠券</a></li>
+                </ul>
+                <div  class="tab-content">
+                    <div id="wxCoupon" role="tabpanel" class="tab-block tab-pane fade active in">
+                        <div class="coupon-code" id="membershipCard">
+                            <div class="form-group">
+                                <label>优惠券领券短连接</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>优惠券领券二维码</label>
+                                <div id="couponCode"></div>
+                            </div>
+                            <div class="form-group">
+                                <a class="btn commonBtn" id="coupon-code-btn">下载二维码</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mixedCoupon" role="tabpanel" class="tab-block tab-pane">
+                        <div class="coupon-code" id="mixCoupon">
+                            <div class="form-group coupon-mix-btn">
+                                <button class="btn commonBtn new-coupon-mix">新建/编辑</button>
+                            </div>
+                            <div class="form-group coupon-mix">
+                                <label>优惠券领券短连接</label>
+                                <input type="text" class="form-control mix-coupon-control">
+                            </div>
+                            <div class="form-group coupon-mix">
+                                <label>优惠券领券二维码</label>
+                                <div id="mixCouponCode"></div>
+                            </div>
+                            <div class="form-group empty-coupon">
+                                <div class="empty-coupon-icon"></div>
+                            </div>
+                            <div class="form-group empty-coupon">
+                                <div class="empty-coupon-word">暂无混码券</div>
+                            </div>
+                            <div class="form-group">
+                                <a class="btn commonBtn mix-coupon-type">下载二维码</a>
+                            </div>
+                        </div>
+                        <div id="couponCodeEdit" style="display: none;">
+                            <div class="form-group" style="text-align: left">
+                                <label class="titleName">当前选中微信优惠券：</label>
+                                <input type="text" class="form-control control-normal-text wx-coupon-input" readonly="readonly"/>
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label class="titleName">请填写淘企店优惠券链接：<span class="title-name-icon">*</span></label>
+                                <div class="wx-coupon-text">
+                                    <textarea class="form-control coupon-url" placeholder="请输入不超过1000字的链接" style="width: 85%;resize: none;" maxlength="1000"></textarea>
+                                    <span class="introduct">
+                                        <span class="growth-introduct">0</span>
+                                        <span>/1000</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div  class="form-group coupon-btn-modal">
+                                <button type="button" class="btn cancel coupon-author-cancel">取消</button>
+                                <button type="button" class="btn commonBtn coupon-author-btn">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="couponStatus" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">提醒</h4>
+            </div>
+            <div class="modal-body">
+                <div style="color: #f39991;padding-bottom: 13px;">设置卡券作废的操作不可逆，即无法将设置为作废的卡券调回正常状态，商家须慎重使用！</div>
+                <div class="form-group">
+                    <label>作废原因：</label>
+                    <input type="text" class="form-control to-void-word" placeholder="请输入作废原因"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn cancel cancelCouponStatus">取 消</button>
+                <button type="button" class="btn commonBtn addCouponStatus" data-dismiss="modal">确 认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="couponCrmStatus" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">提醒</h4>
+            </div>
+            <div class="modal-body">
+                <div style="color: #f39991;padding-bottom: 13px;">设置卡券作废的操作不可逆，即无法将设置为作废的卡券调回正常状态，商家须慎重使用！</div>
+                <div class="form-group">
+                    <label>作废原因：</label>
+                    <input type="text" class="form-control crm-to-void-word" placeholder="请输入作废原因"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn cancel cancelCrmCouponStatus">取 消</button>
+                <button type="button" class="btn commonBtn addCrmCouponStatus" data-dismiss="modal">确 认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/Content/JS/jquery-1.9.1.js"></script>
+<script src="/Content/bootstrap/js/bootstrap.js"></script>
+<script src="/Content/bootstrap/js/bootstrap-switch.min.js"></script>
+<script src="/Content/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/Content/bootstrap/locale/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/Content/JS/jquery.qrcode.min.js"></script>
+<script src="/Content/JS/iptools_v2.js"></script>
+<script src="/Content/JS/ipComponents.js"></script>
+<script src="js/coupon.js"></script>
+<script>
+    Iptools.Start();
+    widget._init();
+</script>
+</body>
+</html>
