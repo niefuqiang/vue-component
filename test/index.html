@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>党组织群组列表</title>
+</head>
+<body>
+<div class="mainSection">
+    <div id="storeGroupPanel" class="store_group_right" data-id="1"></div>
+</div>
+<script src="https://static-dev.itrigger.cn/Content/JS/jquery-1.9.1.js"></script>
+<script src="js/store.js"></script>
+<script>
+    $("#storeGroupPanel").html("你好啊");
+    if ($("#storeGroupPanel").attr("data-id") == 1) {
+       $("#storeGroupPanel").html($("#storeGroupPanel").attr("data-id"));
+    } else {
+       $("#storeGroupPanel").html("哈哈哈111");
+    }
+</script>
+</body>
+</html>
