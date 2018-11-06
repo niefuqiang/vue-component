@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>插件封装</title>
+    <link href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css" rel="stylesheet">
+    <link href="http://static-dev.itrigger.cn/Content/bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="http://static-dev.itrigger.cn/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://static-dev.itrigger.cn/Content/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet" />
+    <link href="http://static-dev.itrigger.cn/Content/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <link href="http://static-dev.itrigger.cn/Content/Style/standard.css" rel="stylesheet"/>
+    <link href="css/standard.css" rel="stylesheet"/>
+</head>
+<body>
+<div style="height: 500px;display: none;">
+    <div id="tag"></div>
+</div>
+<div style="height: 500px;">
+    <div id="systemTag"></div>
+</div>
+<div style="height: 500px;display: none;">
+    <div id="batchTag"></div>
+</div>
+<div id="contactRecords" style="display: none;"></div>
+<div id="dealRecords" style="display: none;"></div>
+<script src="http://static-dev.itrigger.cn/Content/JS/jquery-1.9.1.js"></script>
+<script src="http://static-dev.itrigger.cn/Content/bootstrap/js/jquery-ui.min.js"></script>
+<script src="http://static-dev.itrigger.cn/Content/bootstrap/js/bootstrap.js"></script>
+<script src="http://static-dev.itrigger.cn/Content/bootstrap/js/bootstrapValidator.min.js"></script>
+<script src="http://static-dev.itrigger.cn/Content/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+<script src="http://static-dev.itrigger.cn/Content/bootstrap/locale/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="http://static-dev.itrigger.cn/Content/bootstrap/js/bootstrap-multiselect.js"></script>
+<script src="http://static-dev.itrigger.cn/Content/JS/iptools_v2.js"></script>
+<script src="js/standard.js"></script>
+<script>
+    Iptools.Start();
+    component._toTag("#tag", {//所要显示的标签元素
+        isModal: true,//是否出现添加标签modal
+        isData: true,//所要显示的标签元素是否有初始化数据
+        receiveSize: {//显示所选标签元素的高
+            height: "350px"
+        },
+        valueType: "contact",//客户类型
+        valueId: 4030,//客户Id
+        isTagItInput: true//是否有显示输入标签的框
+    });
+    component._toTag("#systemTag", {//所要显示的标签元素
+        isModal: false,//不显示modal
+        isData: true,//所要显示的标签元素是否有初始化数据
+        receiveSize: {//显示所选标签元素的高
+            height: "200px"
+        },
+        valueType: "system",//系统类型
+        isTagItInput: true//是否有显示输入标签的框
+    });
+    component._toTag("#batchTag", {//所要显示的标签元素
+        isModal: true,//显示modal
+        isData: false,//所要显示的标签元素是否有初始化数据
+        receiveSize: {//显示所选标签元素的高
+            height: "200px"
+        },
+        valueType: "batch",//系统类型
+        isTagItInput: false//是否有显示输入标签的框
+    });
+
+
+    component._follow("#contactRecords",{//所要显示的元素标签
+        applet: "5b5d1593-ab94-4f46-98f8-da6c92f8dad6",//客户detail的appletId
+        valueType: "contact",//客户类型
+        valueId: 4030,//客户Id
+        itemText: [//显示的标题和字段
+            {
+                title: "过去12个月消费",//标题名称
+                first_vir: "1year_consume_sum_vir",//第一个标题数据
+                last_vir: "1year_consume_count_vir"//最后一个标题数据
+            },
+            {
+                title: "总计消费",
+                first_vir: "total_consume_sum_vir",
+                last_vir: "total_consume_count_vir"
+            },
+            {
+                title: "首次消费",
+                first_vir: "first_consume_date_vir",
+                last_vir: "first_consume_amount_vir"
+            },
+            {
+                title: "末次跟进",
+                first_vir: "last_touch_vir",
+                last_vir: "last_touch_owner_vir"
+            }
+        ]
+    });
+    component._follow("#dealRecords",{//所要显示的元素标签
+        applet: "3f2cf4a3-2f08-4a24-916b-4260fdfa5ddc",//商机detail的appletId
+        valueType: "deal",//商机类型
+        valueId: 368,//商机Id
+        itemText: [//显示的标题和字段
+            {
+                title: "首次跟进",//标题名称
+                first_vir: "first_touch_date_vir",//第一个标题数据
+                last_vir: "first_touch_owner_vir"//最后一个标题数据
+            },
+            {
+                title: "末次跟进",
+                first_vir: "last_touch_date_vir",
+                last_vir: "last_touch_owner_vir"
+            },
+            {
+                title: "跟进周期",
+                first_vir: "first_touch_date_vir",
+                type_vir: "word",
+                last_vir: "total_touch_counter_vir"
+            }
+        ]
+    });
+</script>
+</body>
+</html>
